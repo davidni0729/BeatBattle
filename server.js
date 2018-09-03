@@ -33,6 +33,21 @@ io.sockets.on('connection',
     console.log("We have a new client: " + socket.id);
   
     // When this user emits, client side: socket.emit('otherevent',some data);
+    socket.on('button',
+      function(data) {
+        // Data comes in as whatever was sent, including objects
+        console.log("Received: 'button' " + data.btn1 + " " + data.btn2 + " " + data.btn3 + " " + data.btn4);
+      
+        // Send it to all other clients
+        socket.broadcast.emit('button', data);
+        
+        // This is a way to send to everyone including sender
+        // io.sockets.emit('message', "this goes to everyone");
+
+      }
+    );
+    
+    // When this user emits, client side: socket.emit('otherevent',some data);
     socket.on('mouse',
       function(data) {
         // Data comes in as whatever was sent, including objects
