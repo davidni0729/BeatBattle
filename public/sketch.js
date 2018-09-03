@@ -93,20 +93,16 @@ createCanvas(1200, 400);
   //println(frameRate);
   // Start a socket connection to the server
   // Some day we would run this server somewhere else
-   //socket = io.connect('http://192.168.1.70:3000');
-  // // We make a named event called 'mouse' and write an
-  // // anonymous callback function
-  //  socket.on('button',
-  //   // When we receive data
-  //   function(data) {
-  //     console.log("Got: " + data.btn1 + " " + data.btn2 + " " + data.btn3 + " " + data.btn4 + " " );
-  //     // Draw a blue circle
-  //     c1 = data.c1;
-  //     c2 = data.c2;
-  //     fill(data.c1,data.c2,0);
-  //     ellipse(w/2,h/2,100,100);
-  //   }
-  // );
+   socket = io.connect('http://192.168.1.104:3000');
+  // We make a named event called 'mouse' and write an
+  // anonymous callback function
+   socket.on('button',
+    // When we receive data
+    function(data) {
+      console.log("Got: " + data.btn1 + " " + data.btn2 + " " + data.btn3 + " " + data.btn4 + " " );
+      
+    }
+  );
 
   
 
