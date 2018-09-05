@@ -1,16 +1,5 @@
-// ITP Networked Media, Fall 2014
-// https://github.com/shiffman/itp-networked-media
-// Daniel Shiffman
-
-// Keep track of our socket connection
- 
-// var c1,c2;
-
-// var w;
-// var h;
 
 var socket;
-//var asterisk;
 var ghost1;
 var ghost2;
 var ghost3;
@@ -93,7 +82,7 @@ createCanvas(1200, 400);
   //println(frameRate);
   // Start a socket connection to the server
   // Some day we would run this server somewhere else
-   socket = io.connect('http://192.168.1.104:3000');
+   socket = io.connect('http://192.168.43.229:3000');
   // We make a named event called 'mouse' and write an
   // anonymous callback function
    socket.on('button',
@@ -101,11 +90,25 @@ createCanvas(1200, 400);
     function(data) {
       console.log("Got: " + data.btn1 + " " + data.btn2 + " " + data.btn3 + " " + data.btn4 + " " );
       
+        if(data.btn1)
+          ghost1.rotation-= 10;
+        ghost1.visible = !ghost1.mouseIsPressed;
+
+        if(data.btn2)
+          ghost2.rotation-= 10;
+        ghost2.visible = !ghost2.mouseIsPressed;
+
+        if(data.btn3)
+          ghost3.rotation-= 10;
+        ghost3.visible = !ghost3.mouseIsPressed;
+
+        if(data.btn4)
+          ghost4.rotation-= 10;
+        ghost4.visible = !ghost4.mouseIsPressed;
+
+        drawSprites();
     }
   );
-
-  
-
 }
 
 function draw() {
@@ -117,65 +120,10 @@ function draw() {
     draggedSprite.position.y = mouseY;
   }
 
-  //if a sprite is mouseActive true I can check if the mouse is over its collider
-  //and if the button is pressed
-  
-
-judgeGhost();
-
-    // fill(c1,c2,0);
-    // ellipse(w/2,h/2,100,100);
-
-  // btn1.display();
-  // btn2.display();
-  //     console.log("btn1.mouseIsPressed", btn1.mouseIsPressed);
-  //     console.log("btn2.mouseIsPressed", btn2.mouseIsPressed);
-
-  // if(btn1.mouseIsPressed){
-  //   console.log("btn1 is pressed");
-
-  //   sendButton(200,50);
-  // }else if(btn2.mouseIsPressed){
-  //   console.log("btn2 is pressed");
-
-  //   sendButton(50,200);
-  // } 
+  //draw the ghosts
+    drawSprites();
+ 
 }
 
-
-
-
-function judgeGhost(){
-
-
-  if(ghost1.mouseIsOver)
-    ghost1.rotation-= 10;
-  ghost1.visible = !ghost1.mouseIsPressed;
-
-
-  if(ghost2.mouseIsOver)
-    ghost2.rotation-= 10;
-  ghost2.visible = !ghost2.mouseIsPressed;
-
-
-
-  if(ghost3.mouseIsOver)
-    ghost3.rotation-= 10;
-  ghost3.visible = !ghost3.mouseIsPressed;
-
-
-
-  if(ghost4.mouseIsOver)
-    ghost4.rotation-= 10;
-  ghost4.visible = !ghost4.mouseIsPressed;
-
-
-
-
-  drawSprites();
-
-
-
-}
 
 
