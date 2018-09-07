@@ -24,7 +24,6 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
 
-
   btnWidth = windowWidth/4;
   btn1Color = color(190,194,63);
   btn1OverlayAlpha = 0;
@@ -38,12 +37,6 @@ function setup() {
   btn4Color = color(152,109,178);
   btn4OverlayAlpha = 0;
   btn4x = btnWidth * 3;
-
-
-
-  // Start a socket connection to the server
-  // Some day we would run this server somewhere else
-  socket = io.connect('http://192.168.43.229:3000');
 
 }
 
@@ -81,7 +74,7 @@ function draw() {
 
 
 function mousePressed() {
-  if(event.type == 'mousedown'){
+  // if(event.type == 'mousedown'){
 
     var data = {
         btn1: false,
@@ -118,6 +111,6 @@ function mousePressed() {
         socket.emit('button',data);
       }
 
-  }
+  // }
 
 }

@@ -31,9 +31,6 @@ createCanvas(1200, 400);
   ghost4.addAnimation('normal', 'assets/ghost_spin0001.png', 'assets/ghost_spin0003.png');
   ghost4.mouseActive = true;
 
-  // Start a socket connection to the server
-  // Some day we would run this server somewhere else
-   socket = io.connect('http://192.168.43.229:3000');
   // We make a named event called 'mouse' and write an
   // anonymous callback function
    socket.on('button',
